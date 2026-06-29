@@ -1,0 +1,1754 @@
+:root {
+  --ui-bg-0: #07121b;
+  --ui-bg-1: #0d2232;
+  --ui-bg-2: #17354b;
+  --ui-surface: rgba(18, 38, 56, 0.9);
+  --ui-surface-strong: rgba(20, 47, 69, 0.95);
+  --ui-surface-soft: rgba(13, 31, 46, 0.86);
+  --ui-border: rgba(148, 184, 210, 0.24);
+  --ui-text: #e9f5ff;
+  --ui-muted: #96b5cb;
+  --ui-accent: #45ebb7;
+  --ui-accent-2: #63c8ff;
+  --ui-warning: #ffbc6d;
+  --ui-danger: #ff7e7e;
+  --ui-shadow-lg: 0 20px 42px rgba(4, 11, 18, 0.45);
+  --ui-shadow-md: 0 10px 24px rgba(4, 11, 18, 0.35);
+}
+
+body {
+  width: 100% !important;
+  min-width: 460px;
+  min-height: 620px !important;
+  height: auto !important;
+  margin: 0 !important;
+  overflow-x: hidden;
+  font-family: Bahnschrift, "Trebuchet MS", "Segoe UI Variable", "Segoe UI", sans-serif !important;
+  color: var(--ui-text) !important;
+  background:
+    radial-gradient(140% 90% at 0% 0%, #1f425b 0%, rgba(31, 66, 91, 0) 50%),
+    radial-gradient(120% 80% at 100% 0%, #143f57 0%, rgba(20, 63, 87, 0) 52%),
+    linear-gradient(165deg, var(--ui-bg-0) 0%, var(--ui-bg-1) 48%, var(--ui-bg-2) 100%) !important;
+}
+
+.popup-container {
+  width: 100% !important;
+  min-height: 620px !important;
+  box-sizing: border-box !important;
+  padding: 18px 16px 20px !important;
+  color: var(--ui-text) !important;
+  background: transparent !important;
+  animation: popup-enter 260ms ease-out;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.main-screen,
+.add-url-screen,
+.access-screen,
+.admin-panel {
+  background: transparent !important;
+}
+
+.header,
+.main-screen .header,
+.add-url-screen .header,
+.admin-header {
+  border-bottom: 1px solid rgba(152, 188, 214, 0.28) !important;
+}
+
+.header h2,
+.access-screen h2,
+.admin-header h2 {
+  margin: 0 !important;
+  color: #d6eeff !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em;
+}
+
+.logo,
+.header-logo {
+  box-shadow: 0 8px 18px rgba(8, 25, 42, 0.5) !important;
+  filter: saturate(1.1) brightness(1.08) !important;
+}
+
+.empty-state,
+.stream-item,
+.url-limit-container,
+.admin-stats,
+.stat-card,
+.user-card,
+.error-message,
+.loading-container {
+  border: 1px solid var(--ui-border) !important;
+  box-shadow: var(--ui-shadow-md) !important;
+}
+
+.empty-state,
+.stream-item,
+.url-limit-container,
+.stat-card,
+.user-card,
+.loading-container {
+  background: linear-gradient(155deg, var(--ui-surface) 0%, var(--ui-surface-soft) 100%) !important;
+}
+
+.stream-item {
+  align-items: flex-start !important;
+}
+
+.stream-list {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px !important;
+  align-items: stretch;
+}
+
+.stream-item {
+  display: flex !important;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center !important;
+  gap: 8px;
+  height: auto;
+  padding: 10px !important;
+}
+
+.stream-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.admin-stats {
+  background: transparent !important;
+}
+
+.stream-item:hover,
+.stat-card:hover,
+.user-card:hover {
+  border-color: rgba(99, 200, 255, 0.45) !important;
+  transform: translateY(-2px);
+  box-shadow: var(--ui-shadow-lg) !important;
+}
+
+.stream-url,
+.user-info h3,
+.variation-preview {
+  color: #8edcff !important;
+}
+
+.stream-stats,
+.input-hint,
+.limit-info,
+.user-email,
+.detail-item .label,
+.detail-item .value {
+  color: var(--ui-muted) !important;
+}
+
+.api-input,
+.url-input,
+.messages-input,
+.interval-input,
+.search-input,
+.edit-input,
+.limit-input {
+  background: rgba(8, 24, 38, 0.82) !important;
+  color: var(--ui-text) !important;
+  border: 1px solid rgba(135, 171, 197, 0.35) !important;
+  border-radius: 10px !important;
+}
+
+.api-input::placeholder,
+.url-input::placeholder,
+.messages-input::placeholder,
+.interval-input::placeholder,
+.search-input::placeholder,
+.edit-input::placeholder {
+  color: rgba(150, 184, 206, 0.75) !important;
+}
+
+.api-input:focus,
+.url-input:focus,
+.messages-input:focus,
+.interval-input:focus,
+.search-input:focus,
+.edit-input:focus,
+.limit-input:focus {
+  outline: none !important;
+  border-color: var(--ui-accent-2) !important;
+  box-shadow: 0 0 0 3px rgba(99, 200, 255, 0.24) !important;
+}
+
+.validate-btn,
+.add-url-btn,
+.save-btn,
+.toggle-btn.start,
+.import-btn,
+.save-btn:not(:disabled) {
+  background: linear-gradient(135deg, #57f1c1 0%, #2fd6a4 100%) !important;
+  color: #03251f !important;
+  border: none !important;
+  box-shadow: 0 8px 18px rgba(27, 189, 145, 0.33) !important;
+}
+
+.validate-btn:hover:not(:disabled),
+.add-url-btn:hover,
+.save-btn:hover:not(:disabled),
+.toggle-btn.start:hover,
+.import-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.admin-btn,
+.edit-btn,
+.back-btn,
+.export-btn,
+.refresh-btn,
+.checkbox-badge {
+  background: linear-gradient(135deg, #6cc7ff 0%, #3f9fe4 100%) !important;
+  color: #062135 !important;
+  border: none !important;
+}
+
+.toggle-btn.stop,
+.remove-btn,
+.cancel-btn,
+.badge.inactive {
+  background: linear-gradient(135deg, #ff8f8f 0%, #ff6f7d 100%) !important;
+  color: #2a1115 !important;
+}
+
+.badge.active,
+.badge.admin {
+  color: #052033 !important;
+}
+
+.data-actions {
+  padding: 0 0 14px !important;
+}
+
+.bulk-actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.start-all-btn,
+.stop-all-btn,
+.auto-tab-btn {
+  flex: 1 1 120px;
+  padding: 9px 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.start-all-btn:disabled,
+.stop-all-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.start-all-btn {
+  background: linear-gradient(135deg, #56efc0 0%, #31ca9f 100%);
+  color: #05281f;
+}
+
+.stop-all-btn {
+  background: linear-gradient(135deg, #ff9ea8 0%, #ff7988 100%);
+  color: #2c1218;
+}
+
+.auto-tab-btn.enabled {
+  background: linear-gradient(135deg, #66cbff 0%, #3a98dc 100%);
+  color: #06233a;
+}
+
+.auto-tab-btn.disabled {
+  background: linear-gradient(135deg, #b9c5cf 0%, #8ca0b0 100%);
+  color: #122535;
+}
+
+.search-container {
+  padding: 2px 0 !important;
+}
+
+.stream-controls,
+.header-buttons,
+.user-actions {
+  gap: 7px !important;
+}
+
+.stream-controls {
+  margin-left: auto;
+  width: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-self: center;
+  gap: 8px !important;
+  flex-shrink: 0;
+}
+
+.channel-profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0;
+  flex-shrink: 0;
+}
+
+.channel-avatar-btn {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1px solid rgba(136, 176, 203, 0.45);
+  border-radius: 14px;
+  background: rgba(9, 25, 38, 0.9);
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(7, 18, 29, 0.42);
+}
+
+.channel-avatar-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(99, 200, 255, 0.6);
+}
+
+.channel-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.channel-avatar-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  color: #d8efff;
+  background: linear-gradient(145deg, #37607e 0%, #274961 100%);
+}
+
+.channel-link-btn {
+  margin-top: 0;
+  margin-bottom: 2px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #8edcff;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  display: block;
+}
+
+.channel-link-btn:hover {
+  color: #b8e7ff;
+  text-decoration: underline;
+}
+
+.stream-live-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 5px 0 4px;
+  font-size: 12px;
+}
+
+.live-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.live-dot.live {
+  background: #24eb9f;
+  box-shadow: 0 0 0 3px rgba(36, 235, 159, 0.2);
+}
+
+.live-dot.offline {
+  background: #8ea6b7;
+}
+
+.live-label {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.viewer-count {
+  color: #9bcbe9;
+}
+
+.refresh-channels-btn {
+  flex: 1;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(135deg, #5cb2f2 0%, #3d8ed3 100%);
+  color: #07233a;
+}
+
+.refresh-channels-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.status-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  cursor: pointer;
+  margin-right: 6px;
+  flex-shrink: 0;
+}
+
+.status-switch-input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.status-switch-slider {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: #71879a;
+  transition: background 0.2s ease;
+}
+
+.status-switch-slider::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 3px;
+  top: 3px;
+  border-radius: 50%;
+  background: #ffffff;
+  transition: transform 0.2s ease;
+}
+
+.status-switch-input:checked + .status-switch-slider {
+  background: linear-gradient(135deg, #43eab5 0%, #2fcf9f 100%);
+}
+
+.status-switch-input:checked + .status-switch-slider::before {
+  transform: translateX(20px);
+}
+
+.edit-btn,
+.remove-btn {
+  flex-shrink: 0;
+}
+
+.stream-list .stream-item,
+.users-list .user-card {
+  animation: item-rise 220ms ease-out both;
+}
+
+.stream-list .stream-item:nth-child(1),
+.users-list .user-card:nth-child(1) {
+  animation-delay: 20ms;
+}
+
+.stream-list .stream-item:nth-child(2),
+.users-list .user-card:nth-child(2) {
+  animation-delay: 45ms;
+}
+
+.stream-list .stream-item:nth-child(3),
+.users-list .user-card:nth-child(3) {
+  animation-delay: 70ms;
+}
+
+.stream-list .stream-item:nth-child(4),
+.users-list .user-card:nth-child(4) {
+  animation-delay: 95ms;
+}
+
+.stream-list .stream-item:nth-child(5),
+.users-list .user-card:nth-child(5) {
+  animation-delay: 120ms;
+}
+
+.users-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.users-list::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #66c7ff 0%, #2c8bd2 100%);
+  border-radius: 8px;
+}
+
+.users-list::-webkit-scrollbar-track {
+  background: rgba(7, 20, 31, 0.7);
+}
+
+@keyframes popup-enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes item-rise {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 420px) {
+  body {
+    width: 360px !important;
+    min-width: 0;
+    min-height: 560px !important;
+  }
+
+  .popup-container {
+    padding: 14px !important;
+    min-height: 560px !important;
+  }
+
+  .stream-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stream-controls {
+    justify-content: flex-end;
+  }
+
+  .channel-profile {
+    margin-right: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* ================================================================
+   WHO'S ONLINE — FLOATING PANEL v4
+   ================================================================ */
+
+body.with-online-panel #app-container,
+body.with-online-panel .app-container,
+body.with-online-panel #root {
+  padding-left: 180px !important;
+  box-sizing: border-box !important;
+}
+body.with-online-panel .popup-container {
+  padding-left: 6px !important;
+}
+
+#er-online-panel {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 99999;
+  width: 180px;
+  background: linear-gradient(160deg, rgba(10,28,44,0.97) 0%, rgba(8,20,33,0.98) 100%);
+  border: none;
+  border-right: 1px solid rgba(69,235,183,0.22);
+  border-radius: 0;
+  box-shadow: 4px 0 20px rgba(2,8,16,0.4);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+}
+
+@keyframes er-panel-in {
+  from { opacity:0; transform:translateX(-16px) scale(0.96); }
+  to   { opacity:1; transform:translateX(0) scale(1); }
+}
+
+/* Header */
+#er-online-panel .er-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 12px 9px;
+  border-bottom: 1px solid rgba(69,235,183,0.13);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+#er-online-panel .er-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #45ebb7;
+  box-shadow: 0 0 8px #45ebb7;
+  flex-shrink: 0;
+  animation: er-pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes er-pulse {
+  0%,100% { opacity:1; box-shadow:0 0 8px #45ebb7; }
+  50%      { opacity:0.4; box-shadow:0 0 2px #45ebb7; }
+}
+
+#er-online-panel .er-panel-title {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #45ebb7;
+  flex: 1;
+}
+
+/* Count badge — sits after title, inside header */
+#er-online-panel .er-count-badge {
+  font-size: 10px;
+  font-weight: 800;
+  background: rgba(69,235,183,0.18);
+  color: #45ebb7;
+  border: 1px solid rgba(69,235,183,0.35);
+  border-radius: 20px;
+  padding: 1px 8px;
+  min-width: 22px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* Scrollable list */
+#er-online-panel .er-user-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 8px 8px;
+  flex: 1;
+  min-height: 0;
+}
+
+#er-online-panel .er-user-list::-webkit-scrollbar { width: 3px; }
+#er-online-panel .er-user-list::-webkit-scrollbar-thumb {
+  background: rgba(69,235,183,0.25);
+  border-radius: 3px;
+}
+
+/* User row */
+#er-online-panel .er-user-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 7px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid transparent;
+  transition: border-color .15s, background .15s;
+  animation: er-row-in .3s ease-out both;
+  cursor: default;
+}
+
+@keyframes er-row-in {
+  from { opacity:0; transform:translateY(5px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+#er-online-panel .er-user-row:hover {
+  border-color: rgba(69,235,183,0.22);
+  background: rgba(69,235,183,0.05);
+}
+
+/* Avatar wrapper */
+#er-online-panel .er-avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+}
+
+/* Real Kick profile picture */
+#er-online-panel .er-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(69,235,183,0.5);
+  background: #0d2232;
+  display: block;
+  position: absolute;
+  top: 0; left: 0;
+}
+
+/* Letter fallback */
+#er-online-panel .er-avatar-fallback {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1a4a65, #0a1e2e);
+  border: 2px solid rgba(69,235,183,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+  color: #45ebb7;
+  position: absolute;
+  top: 0; left: 0;
+}
+
+/* Status dot — green (tabbing) or red (idle) */
+#er-online-panel .er-status-dot {
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid #08141f;
+  /* color set inline per user */
+}
+
+/* Username block */
+#er-online-panel .er-username {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+#er-online-panel .er-name {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #e9f5ff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#er-online-panel .er-username small {
+  font-size: 9.5px;
+  font-weight: 400;
+  color: #6a95b0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 1px;
+}
+
+/* Loading / empty */
+#er-online-panel .er-state {
+  font-size: 11px;
+  color: #5a8099;
+  text-align: center;
+  padding: 14px 0;
+}
+
+/* Collapsed state — shrinks to just the header pill */
+#er-online-panel.collapsed {
+  width: 50px;
+}
+#er-online-panel.collapsed .er-user-list {
+  display: none;
+}
+
+/* ================================================================
+   NOTIFICATION BANNER (v1.4)
+   Glowing alert that appears next to the Legends logo in the header
+   ================================================================ */
+
+@keyframes notif-glow {
+  0%   { box-shadow: 0 0 4px #ff8800, 0 0 8px #ff6600; border-color: #ff8800; }
+  50%  { box-shadow: 0 0 12px #ff8800, 0 0 24px #ff6600; border-color: #ffaa44; }
+  100% { box-shadow: 0 0 4px #ff8800, 0 0 8px #ff6600; border-color: #ff8800; }
+}
+
+@keyframes notif-slide-in {
+  from { opacity: 0; transform: translateY(-6px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.er-notif-banner {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 8px;
+  padding: 4px 8px 4px 7px;
+  background: linear-gradient(90deg, #1c0800, #2a1100);
+  border: 1.5px solid #ff8800;
+  border-radius: 9px;
+  max-width: 230px;
+  min-width: 0;
+  animation: notif-glow 1.5s ease-in-out infinite, notif-slide-in 0.3s ease;
+  flex-shrink: 0;
+}
+
+.er-notif-bell {
+  font-size: 13px;
+  flex-shrink: 0;
+  animation: notif-slide-in 0.4s ease;
+}
+
+.er-notif-body {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.er-notif-label {
+  color: #ff8800;
+  font-weight: 800;
+  font-size: 8.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.er-notif-msg {
+  color: #fff;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.er-notif-count {
+  color: #888;
+  font-size: 9px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.er-notif-nav {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 8px;
+  cursor: pointer;
+  padding: 0 1px;
+  line-height: 1;
+}
+
+.er-notif-nav:hover { color: #ff8800; }
+
+.er-notif-ok {
+  background: #ff8800;
+  border: none;
+  border-radius: 5px;
+  color: #000;
+  font-weight: 900;
+  font-size: 9px;
+  padding: 3px 7px;
+  cursor: pointer;
+  flex-shrink: 0;
+  letter-spacing: 0.3px;
+  transition: background 0.15s;
+}
+
+.er-notif-ok:hover {
+  background: #ffaa33;
+}
+
+/* ── Notification banner expandable styles ── */
+
+.er-notif-banner {
+  cursor: pointer;
+  flex-direction: column;
+  align-items: stretch;
+  transition: max-width 0.25s ease, border-color 0.25s;
+}
+
+.er-notif-top-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Collapsed: single line, truncated */
+.er-notif-msg-preview {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Expanded banner */
+.er-notif-expanded {
+  max-width: 340px !important;
+  border-color: #ffaa44 !important;
+}
+
+/* Full message shown below top row when expanded */
+.er-notif-full-msg {
+  margin-top: 7px;
+  padding-top: 7px;
+  border-top: 1px solid #ff880055;
+  color: #fff;
+  font-size: 11px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+  animation: notif-slide-in 0.2s ease;
+}
+
+/* Expand/collapse chevron indicator */
+.er-notif-toggle {
+  font-size: 8px;
+  color: #ff8800;
+  flex-shrink: 0;
+  line-height: 1;
+  opacity: 0.7;
+}
+
+/* ================================================================
+ *  v1.4.0 cleanup overrides — hide UI elements removed in this release.
+ *  ----------------------------------------------------------------
+ *   1. "X new streamers / 20 missing chat" notification banner.
+ *   2. Manual "Add chat / messages" textarea (replaced by AI chat pool).
+ *   3. Per-card support toggle (status-switch) — every user is forced
+ *      to support every live admin streamer.
+ *   4. Per-card "X" delete button — admin-only flow, hidden everywhere
+ *      else; the legends_v140.js sidecar restores it for admin keys.
+ *   5. Tab Focus Mode bar — every user is forced to background-tabs.
+ *   6. Top-bar interval/variation inputs — replaced by the per-streamer
+ *      speed preset on the AI Chat panel (legends_v140.js shows a
+ *      summary instead).
+ *   7. Watchtime clock pill — replaced by the new points/leaderboard
+ *      surface in the admin panel.
+ *   8. Stream-config form's messages section (label, list, input row).
+ * ================================================================ */
+
+/* 1. notification banner */
+.new-streamers-banner { display: none !important; }
+
+/* 2. messages textarea on the Add URL / Edit config form */
+.messages-input { display: none !important; }
+
+/* 2b. messages-input section labels and helper text — best-effort,
+       nuked via the v140 sidecar's DOM observer for cases CSS can't reach. */
+.v140-hide-messages-section { display: none !important; }
+
+/* 3. support toggle slide on each stream card */
+.status-switch { display: none !important; }
+
+/* 4. delete (X) button on each stream card; restored for admins via JS */
+body:not(.v140-is-admin) .remove-btn { display: none !important; }
+
+/* 5. tab focus mode bar (its loader is removed from popup.html, but
+       hide it defensively in case a stale install still has it) */
+#er-tab-focus-mode-bar { display: none !important; }
+
+/* 6. legacy top-bar interval/variation OK button — replaced by the
+       per-streamer speed preset on the AI Chat panel. */
+.v140-hide-legacy-timing { display: none !important; }
+
+/* 7. watchtime pill in the user-info-bar (clock + 0h 0m 0s) */
+.v140-hide-watchtime { display: none !important; }
+
+/* 8. shrink the cards column when the AI chat panel is docked on the
+       right. legends_v140.js toggles this by adding .v140-with-aichat
+       to the body. */
+body.v140-with-aichat #app-container {
+  padding-right: 380px;            /* leave room for docked panel */
+  box-sizing: border-box;
+}
+
+/* 9. inline AI chat panel (rendered by aichat_panel.js v1.4.0) */
+.v140-aichat-dock {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 380px;
+  z-index: 9999;
+  background: #0e1117;
+  border-left: 1px solid #1f2937;
+  color: #e5e7eb;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 12px;
+  overflow-y: auto;
+  display: none;                   /* shown only when current user owns/admins a config */
+}
+body.v140-with-aichat .v140-aichat-dock { display: flex; flex-direction: column; }
+
+.v140-aichat-dock h3 {
+  margin: 0;
+  padding: 12px 14px;
+  background: linear-gradient(135deg, #00ff88, #00cc6a);
+  color: #000;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.v140-aichat-body {
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.v140-aichat-body label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #9ca3af;
+}
+
+.v140-aichat-body input[type="text"],
+.v140-aichat-body input[type="password"],
+.v140-aichat-body textarea,
+.v140-aichat-body select {
+  width: 100%;
+  padding: 6px 8px;
+  background: #1a1f2e;
+  border: 1px solid #2d3548;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 12px;
+  box-sizing: border-box;
+}
+
+.v140-aichat-body textarea { min-height: 60px; resize: vertical; }
+
+.v140-speed-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+.v140-speed-row button {
+  background: rgba(8, 24, 38, 0.82);
+  border: 1px solid rgba(135, 171, 197, 0.35);
+  border-radius: 10px;
+  color: #96b5cb;
+  padding: 7px 4px;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  transition: border-color .2s, transform .15s, background .2s;
+}
+.v140-speed-row button:hover {
+  border-color: rgba(99, 200, 255, 0.5);
+  transform: translateY(-1px);
+}
+.v140-speed-row button.is-active {
+  background: linear-gradient(135deg, #45ebb7 0%, #2fd6a4 100%);
+  color: #03251f;
+  border-color: rgba(69, 235, 183, 0.5);
+  box-shadow: 0 4px 12px rgba(27, 189, 145, 0.3);
+}
+
+.v140-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(8, 24, 38, 0.82);
+  border: 1px solid rgba(135, 171, 197, 0.35);
+  border-radius: 10px;
+  transition: border-color .2s;
+}
+.v140-toggle-row:hover {
+  border-color: rgba(99, 200, 255, 0.4);
+}
+.v140-toggle-row .label-text {
+  font-size: 11px;
+  color: #e9f5ff;
+  font-weight: 600;
+}
+.v140-toggle-row .help-text {
+  font-size: 10px;
+  color: #96b5cb;
+  margin-top: 2px;
+}
+
+.v140-aichat-body button.v140-btn {
+  background: linear-gradient(135deg, #57f1c1 0%, #2fd6a4 100%);
+  border: none;
+  color: #03251f;
+  border-radius: 10px;
+  padding: 7px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(27, 189, 145, 0.3);
+  transition: transform .15s, filter .15s;
+}
+.v140-aichat-body button.v140-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+.v140-aichat-body button.v140-btn-secondary {
+  background: rgba(8, 24, 38, 0.82);
+  color: #e9f5ff;
+  border: 1px solid rgba(135, 171, 197, 0.35);
+  border-radius: 10px;
+  transition: border-color .2s;
+}
+.v140-aichat-body button.v140-btn-secondary:hover {
+  border-color: rgba(99, 200, 255, 0.5);
+}
+.v140-aichat-body button.v140-btn-danger {
+  background: linear-gradient(135deg, #ff8f8f 0%, #ff6f7d 100%);
+  color: #2a1115;
+  border: none;
+  border-radius: 10px;
+  transition: transform .15s;
+}
+.v140-aichat-body button.v140-btn-danger:hover {
+  transform: translateY(-1px);
+}
+
+.v140-aichat-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  font-size: 10px;
+  color: #96b5cb;
+  text-align: center;
+}
+.v140-aichat-stats div { background: rgba(8, 24, 38, 0.82); padding: 6px; border-radius: 10px; border: 1px solid rgba(135, 171, 197, 0.2); }
+.v140-aichat-stats strong { color: #e9f5ff; display: block; font-size: 13px; }
+
+.v140-pool-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.v140-pool-modal-inner {
+  background: linear-gradient(165deg, #07121b 0%, #0d2232 48%, #17354b 100%);
+  border: 1px solid rgba(148, 184, 210, 0.24);
+  border-radius: 14px;
+  width: 100%;
+  max-width: 720px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  color: #e9f5ff;
+  box-shadow: 0 20px 42px rgba(4, 11, 18, 0.45);
+}
+.v140-pool-modal-inner header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(148, 184, 210, 0.24);
+  font-weight: 700;
+}
+.v140-pool-modal-inner .v140-pool-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 14px;
+}
+.v140-pool-modal-inner .v140-pool-row {
+  border-bottom: 1px dashed rgba(148, 184, 210, 0.15);
+  padding: 8px 4px;
+  font-size: 12px;
+}
+.v140-pool-modal-inner .v140-pool-row.is-used { opacity: 0.5; }
+.v140-pool-modal-inner footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  border-top: 1px solid rgba(148, 184, 210, 0.24);
+  gap: 8px;
+}
+
+/* ================================================================
+ *  Streamer Points admin tab (rendered by legends_v140_admin.js).
+ * ================================================================ */
+.v140-points-page {
+  padding: 16px;
+  color: #e5e7eb;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+.v140-points-page header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.v140-points-page h2 {
+  font-size: 15px;
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: 0.4px;
+}
+.v140-points-page .v140-day-picker {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.v140-points-page input[type="date"] {
+  background: #1a1f2e;
+  color: #fff;
+  border: 1px solid #2d3548;
+  border-radius: 5px;
+  padding: 4px 6px;
+  font-size: 11px;
+}
+.v140-points-list { display: flex; flex-direction: column; gap: 4px; }
+.v140-points-row {
+  display: grid;
+  grid-template-columns: 130px 1fr 60px;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+.v140-points-row .name {
+  color: #fff;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.v140-points-row .bar {
+  position: relative;
+  height: 18px;
+  background: #1a1f2e;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.v140-points-row .bar > div {
+  height: 100%;
+  border-radius: 4px;
+}
+.v140-points-row .hours {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: #cbd5e1;
+}
+
+/* color tiers: 1-5 red, 5-10 yellow, 10-15 green, 15-24 deeper green */
+.v140-bar-color-red    { background: linear-gradient(90deg, #ff5454, #ff2424); }
+.v140-bar-color-yellow { background: linear-gradient(90deg, #f5c451, #f59e0b); }
+.v140-bar-color-green  { background: linear-gradient(90deg, #34d399, #10b981); }
+.v140-bar-color-darker { background: linear-gradient(90deg, #16a34a, #047857); }
+.v140-bar-color-empty  { background: #283142; }
+
+/* fullscreen overlay rendered by legends_v140_admin.js */
+#v140-points-overlay.v140-points-page {
+  position: fixed;
+  inset: 0;
+  z-index: 100001;
+  background: #0b0e14;
+  overflow-y: auto;
+}
+.v140-points-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  gap: 8px;
+}
+.v140-points-header span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.v140-points-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 11px;
+  color: #94a3b8;
+  margin-bottom: 8px;
+}
+.v140-points-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.v140-points-legend span > span {
+  width: 16px;
+  height: 8px;
+  border-radius: 2px;
+  display: inline-block;
+}
+.v140-points-summary {
+  font-size: 11px;
+  color: #cbd5e1;
+  margin-bottom: 12px;
+  padding: 6px 8px;
+  background: #1a1f2e;
+  border-radius: 5px;
+  border: 1px solid #2d3548;
+}
+.v140-points-row {
+  /* v3.0 — 2-row grid: top has name+bar+meta, bottom has the 24h
+     timeline strip spanning the full row width. */
+  display: grid;
+  grid-template-columns: 140px 1fr 110px;
+  grid-template-areas:
+    "name bar meta"
+    "timeline timeline timeline";
+  align-items: center;
+  gap: 4px 8px;
+  font-size: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.v140-points-row .v140-points-name { grid-area: name; }
+.v140-points-row .v140-points-bar  { grid-area: bar; }
+.v140-points-row .v140-points-meta { grid-area: meta; }
+.v140-points-row .v140-points-timeline { grid-area: timeline; }
+.v140-points-row .v140-points-name {
+  color: #fff;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.v140-points-row .v140-points-bar {
+  position: relative;
+  height: 14px;
+  background: #1a1f2e;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.v140-points-row .v140-points-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+}
+.v140-points-row .v140-points-meta {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: #cbd5e1;
+  font-size: 11px;
+}
+/* v3.0 — per-user 24h timeline strip inside Streamer Points. */
+.v140-points-row .v140-points-timeline {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 2px;
+  height: 12px;
+  margin-top: 2px;
+  padding: 1px;
+  background: #0f1623;
+  border: 1px solid #1f2940;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.v140-points-row .v140-points-timeline .wt-cell {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 2px;
+  position: relative;
+}
+.v140-points-row .v140-points-timeline .wt-cell.lvl-1 { background: #1f4a3a; }
+.v140-points-row .v140-points-timeline .wt-cell.lvl-2 { background: #2a8b5a; }
+.v140-points-row .v140-points-timeline .wt-cell.lvl-3 { background: #36cf78; }
+.v140-points-row .v140-points-timeline .wt-cell.lvl-4 { background: #5eff9d; }
+.v140-points-row .v140-points-timeline .wt-cell.is-now {
+  outline: 1px solid #f59e0b;
+  outline-offset: -1px;
+}
+.v140-points-row .v140-points-timeline .wt-cell:hover::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0a0f1a;
+  border: 1px solid #2d3548;
+  color: #e5e7eb;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 9;
+}
+/* v1.4.3 — user did not connect today: tint row red. */
+.v140-points-row.v140-points-row-offline {
+  background: rgba(239, 68, 68, 0.08);
+  border-radius: 4px;
+}
+.v140-points-row.v140-points-row-offline .v140-points-name {
+  color: #fca5a5;
+}
+.v140-points-row.v140-points-row-offline .v140-points-bar {
+  background: transparent;
+  border: 1px dashed #b91c1c;
+}
+.v140-points-row .v140-points-bar-empty {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fca5a5;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+.v140-btn {
+  background: linear-gradient(135deg, #00ff88, #00cc6a);
+  border: none;
+  color: #000;
+  border-radius: 5px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.v140-btn-secondary {
+  background: #1a1f2e;
+  color: #e5e7eb;
+  border: 1px solid #2d3548;
+}
+.v140-points-trigger-btn {
+  position: fixed;
+  top: 8px;
+  right: 8px;
+  z-index: 9998;
+  background: linear-gradient(135deg, #00ff88, #00cc6a);
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+body:not(.v140-is-admin) .v140-points-trigger-btn { display: none !important; }
+
+/* additions banner — Phase A: hide v1.3.x "X new streamers" banner */
+.new-streamers-banner { display: none !important; }
+
+/* ================================================================
+ *  v1.4.1 — pen / edit button on stream cards: gone for everyone.
+ *  AI chat panel handles config now; no need for a per-card form.
+ * ================================================================ */
+.stream-controls .edit-btn { display: none !important; }
+
+/* shrink stream cards — horizontal layout */
+.stream-item {
+  padding: 6px 10px !important;
+  gap: 6px !important;
+  min-height: 0 !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+}
+.stream-item .stream-info { gap: 2px !important; }
+.stream-item .stream-url { font-size: 12px !important; line-height: 1.2 !important; }
+.stream-item .stream-stats { font-size: 10px !important; line-height: 1.15 !important; }
+.stream-item .stream-live-row { font-size: 10px !important; line-height: 1.2 !important; }
+.stream-item .stream-controls { gap: 4px !important; }
+.stream-item .remove-btn { padding: 4px 7px !important; font-size: 12px !important; }
+
+/* v1.4.1 admin: hide the inline "✎ Edit Stats" pen in admin panel.
+ * The button is inline-styled, not classed — sidecar JS hides it. */
+.v140-edit-stats-hidden { display: none !important; }
+
+/* v1.4.1 admin: per-row Delete User button (sidecar-injected) */
+.v140-delete-user-btn {
+  background: linear-gradient(135deg, #ef4444, #b91c1c);
+  border: none;
+  color: #fff;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 4px;
+}
+.v140-delete-user-btn:hover { filter: brightness(1.1); }
+
+/* v1.4.2 admin: per-row Revoke Admin button (sidecar-injected on admin rows) */
+.v140-revoke-admin-btn {
+  background: linear-gradient(135deg, #f59e0b, #b45309);
+  border: none;
+  color: #1a1300;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  margin-left: 4px;
+}
+.v140-revoke-admin-btn:hover { filter: brightness(1.1); }
+
+/* v1.4.2: paused badge on stream cards whose owner isn't tabbing right now */
+.stream-item.v140-paused-by-owner {
+  opacity: 0.55;
+  position: relative;
+}
+.stream-item.v140-paused-by-owner::after {
+  content: "⏸ PAUSED — owner offline";
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: rgba(31, 41, 55, 0.92);
+  color: #fbbf24;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.3px;
+  pointer-events: none;
+}
+
+/* v1.4.1: admin Streamer Points tab button (injected into admin tab bar) */
+.v140-points-tab-btn {
+  background: transparent;
+  border: 1px solid #283142;
+  border-radius: 7px;
+  color: #cbd5e1;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+}
+.v140-points-tab-btn:hover { border-color: #00ff88; color: #fff; }
+.v140-points-tab-btn.is-active {
+  border-color: #00ff88;
+  color: #00ff88;
+  background: rgba(0, 255, 136, 0.07);
+}
+
+/* ── Warning table forced styles ────────────────────────────── */
+#er-warn-table {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+#er-warn-tbl {
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 2px !important;
+  table-layout: fixed !important;
+}
+#er-warn-tbl tr {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+#er-warn-tbl td {
+  color: #ffffff !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  padding: 6px 4px !important;
+  vertical-align: middle !important;
+}
+
+/* ────────────────────────────────────────────────────────────── */
+/*  v3.0 — "I'M LIVE" button + 24-hour timeline + tab-count       */
+/* ────────────────────────────────────────────────────────────── */
+
+.im-live-wrap {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  margin: 10px 12px 14px 12px !important;
+  padding: 0 !important;
+  position: relative;
+  z-index: 6;
+}
+
+.im-live-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  width: 100%;
+  padding: 10px 14px !important;
+  border-radius: 12px !important;
+  border: 1.5px solid transparent !important;
+  font-family: inherit !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.6px !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  transition: transform 0.08s ease, background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease !important;
+}
+.im-live-btn:active { transform: scale(0.99); }
+
+.im-live-btn .im-live-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.18);
+}
+
+.im-live-btn.im-live-off {
+  background: linear-gradient(135deg, #4a0d12 0%, #92161e 100%) !important;
+  border-color: rgba(255, 90, 90, 0.55) !important;
+  color: #ffeaea !important;
+  box-shadow: 0 4px 14px rgba(255, 50, 50, 0.25);
+}
+.im-live-btn.im-live-off .im-live-dot { background: #ff3b3b; box-shadow: 0 0 6px #ff3b3b; }
+.im-live-btn.im-live-off:hover { border-color: #ff7e7e !important; }
+
+.im-live-btn.im-live-on {
+  background: linear-gradient(135deg, #0a3a17 0%, #1ba14d 100%) !important;
+  border-color: rgba(80, 235, 145, 0.55) !important;
+  color: #e8ffe8 !important;
+  box-shadow: 0 4px 14px rgba(60, 200, 110, 0.32);
+}
+.im-live-btn.im-live-on .im-live-dot {
+  background: #29ff8c; box-shadow: 0 0 8px #29ff8c;
+  animation: imLivePulse 1.6s ease-in-out infinite;
+}
+@keyframes imLivePulse {
+  0%   { transform: scale(1);   opacity: 1;   }
+  50%  { transform: scale(1.3); opacity: 0.7; }
+  100% { transform: scale(1);   opacity: 1;   }
+}
+
+.im-live-btn.im-live-loading {
+  background: rgba(80, 95, 110, 0.5) !important;
+  border-color: rgba(180, 200, 220, 0.35) !important;
+  color: #cde !important;
+  cursor: wait !important;
+}
+
+.im-live-status {
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--ui-muted);
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+
+/* ── 24-hour watchtime timeline bar ────────────────────────── */
+.wt-24h-wrap {
+  margin: 8px 12px 14px 12px;
+  padding: 10px 12px;
+  background: var(--ui-surface-soft);
+  border: 1px solid var(--ui-border);
+  border-radius: 10px;
+}
+.wt-24h-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: var(--ui-muted);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.wt-24h-title .wt-24h-total {
+  color: var(--ui-accent);
+  font-weight: 800;
+  text-transform: none;
+  letter-spacing: 0.2px;
+}
+.wt-24h-bar {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 2px;
+  height: 28px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.wt-24h-bar .wt-cell {
+  background: rgba(255, 255, 255, 0.04);
+  position: relative;
+  border-radius: 2px;
+  transition: background-color 0.2s ease;
+}
+.wt-24h-bar .wt-cell.lvl-1 { background: #1f4a3a; }
+.wt-24h-bar .wt-cell.lvl-2 { background: #2a8b5a; }
+.wt-24h-bar .wt-cell.lvl-3 { background: #36cf78; }
+.wt-24h-bar .wt-cell.lvl-4 { background: #45ebb7; box-shadow: 0 0 4px rgba(69, 235, 183, 0.6) inset; }
+.wt-24h-bar .wt-cell.is-now { outline: 1.5px solid var(--ui-accent-2); }
+.wt-24h-bar .wt-cell:hover::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0b1d2a;
+  color: #fff;
+  font-size: 10px;
+  padding: 4px 7px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  border: 1px solid var(--ui-border);
+  z-index: 20;
+}
+.wt-24h-ruler {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  font-size: 10px;
+  color: var(--ui-muted);
+  margin-top: 4px;
+  text-align: center;
+}
+.wt-24h-ruler span:first-child  { text-align: left; }
+.wt-24h-ruler span:last-child   { text-align: right; }
+
+/* ── Online-panel tab-count column ──────────────────────────── */
+.op-tabcount {
+  display: inline-block;
+  min-width: 22px;
+  padding: 0 6px;
+  margin-left: 6px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 800;
+  text-align: center;
+  background: rgba(99, 200, 255, 0.15);
+  color: var(--ui-accent-2);
+  border: 1px solid rgba(99, 200, 255, 0.25);
+}
+.op-support-account {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 6px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #ffbc6d;
+  background: rgba(255, 188, 109, 0.1);
+  border: 1px solid rgba(255, 188, 109, 0.25);
+}

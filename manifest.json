@@ -1,0 +1,108 @@
+{
+  "description": "",
+  "version": "3.3.6",
+  "manifest_version": 3,
+  "name": "LEGENDS SUV",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "tabs",
+    "alarms",
+    "debugger"
+  ],
+  "background": {
+    "service_worker": "background.worker.js"
+  },
+  "action": {
+    "default_icon": "icon-34.png"
+  },
+  "icons": {
+    "128": "icon-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://kick.com/*",
+        "https://www.kick.com/*"
+      ],
+      "js": [
+        "block-media.js"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "er_logger.js"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://kick.com/*",
+        "https://www.kick.com/*"
+      ],
+      "js": [
+        "focus-lock.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "contentScript.bundle.js"
+      ],
+      "css": [
+        "content.styles.css"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://kick.com/*",
+        "https://www.kick.com/*"
+      ],
+      "js": [
+        "humanlike.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "host_permissions": [
+    "https://kick.com/*",
+    "https://www.twitch.tv/*",
+    "https://twitch.tv/*",
+    "https://script.googleusercontent.com/*",
+    "https://script.google.com/*",
+    "https://api.ipify.org/*",
+    "https://api.legendsrp.site/*",
+    "https://api1.legendsrp.site/*",
+    "https://ollama.com/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "content.styles.css",
+        "icon-128.png",
+        "icon-34.png",
+        "online_panel.js",
+        "aichat_panel.js",
+        "legends_v140.js",
+        "legends_v140_admin.js",
+        "er_logger.js",
+        "im_live_btn.js",
+        "watchtime_bar.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "update_url": "https://dzhicham16-commits.github.io/my-extension/updates.xml"
+}

@@ -1,0 +1,119 @@
+/* UI panel */
+#fb-reach-sorter-ui {
+  position: fixed;
+  top: 80px;
+  right: 14px;
+  z-index: 100000;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  max-width: 280px;
+}
+
+#fb-reach-sorter-ui .reach-sorter-panel {
+  background: rgba(255,255,255,0.98);
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  border: 1px solid rgba(0,0,0,0.1);
+  backdrop-filter: blur(8px);
+}
+
+.reach-sorter-header {
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.reach-sorter-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: #1877f2;
+}
+
+.reach-sorter-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+#fb-reach-sorter-ui button {
+  background: #1877f2;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 12px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+#fb-reach-sorter-ui button:hover {
+  background: #166fe5;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(24, 119, 242, 0.3);
+}
+
+#reach-refresh-btn {
+  padding: 8px !important;
+  min-width: 32px;
+}
+
+.reach-toggle {
+  font-size: 11px;
+  color: #65676b;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.reach-toggle input {
+  margin: 0;
+}
+
+.reach-stats {
+  font-size: 11px;
+  color: #65676b;
+  line-height: 1.4;
+  background: rgba(0,0,0,0.03);
+  padding: 6px 8px;
+  border-radius: 6px;
+}
+
+/* reach badge default styling; position via inline style in content script */
+.reach-badge {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.8);
+  color: white;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #fb-reach-sorter-ui {
+    right: 8px;
+    top: 60px;
+    max-width: 240px;
+  }
+  
+  .reach-sorter-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  #fb-reach-sorter-ui button {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+}

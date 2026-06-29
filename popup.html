@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ER</title>
+    <link rel="stylesheet" href="popup.override.css" />
+    <!-- Debug logger — must load FIRST so the console wrapper is in place before anything else runs. -->
+    <script src="er_logger.js"></script>
+    <script defer src="popup.bundle.js"></script>
+    <script defer src="online_panel.js"></script>
+    <!-- v1.4.0: tab_focus_mode_ui dropped — every user is forced to background-tabs mode. -->
+    <script defer src="aichat_panel.js"></script>
+    <!-- v1.4.0 cleanup + watchtime heartbeat + auto-sync + admin Streamer Points page. -->
+    <script defer src="legends_v140.js"></script>
+    <script defer src="legends_v140_admin.js"></script>
+    <!-- v3.0 — "I'M LIVE" button (popup, every user). The 24h-timeline
+         bar lives only inside the admin Streamer Points page now;
+         watchtime_bar.js is still loaded as a module so the admin
+         sidecar can call into it, but it does NOT auto-mount on the
+         main popup body. -->
+    <script defer src="im_live_btn.js"></script>
+    <script defer src="watchtime_bar.js"></script>
+    <!-- Floating "Debug Log" button + viewer for the er_logger buffer. -->
+    <script defer src="er_logger_ui.js"></script>
+  </head>
+  <body>
+    <div id="app-container"></div>
+  </body>
+</html>
